@@ -1,0 +1,35 @@
+artifact_path: file:///content/drive/My Drive/mlflow_results/637807906163765682/models/m-753030fc9cfa45429f7b86eaf4a7c3ef/artifacts
+flavors:
+  python_function:
+    data: model.xgb
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.xgboost
+    python_version: 3.11.13
+  xgboost:
+    code: null
+    data: model.xgb
+    model_class: xgboost.sklearn.XGBRegressor
+    model_format: xgb
+    xgb_version: 3.0.3
+is_signature_from_type_hint: false
+mlflow_version: 3.2.0
+model_id: m-753030fc9cfa45429f7b86eaf4a7c3ef
+model_size_bytes: 243388
+model_uuid: m-753030fc9cfa45429f7b86eaf4a7c3ef
+prompts: null
+run_id: 72eda1c88c3e4ee9a058f8a5b9935d7a
+signature:
+  inputs: '[{"type": "long", "name": "store_nbr", "required": true}, {"type": "long",
+    "name": "item_nbr", "required": true}, {"type": "long", "name": "year", "required":
+    true}, {"type": "long", "name": "month", "required": true}, {"type": "long", "name":
+    "day", "required": true}, {"type": "long", "name": "day_of_week", "required":
+    true}, {"type": "double", "name": "lag_1", "required": true}, {"type": "double",
+    "name": "lag_7", "required": true}, {"type": "double", "name": "lag_14", "required":
+    true}, {"type": "double", "name": "rolling_avg_7", "required": true}, {"type":
+    "double", "name": "rolling_stdv_7", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float32", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-08-13 08:44:33.498561'

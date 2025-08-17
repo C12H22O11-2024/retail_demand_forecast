@@ -1,0 +1,10 @@
+artifact_location: file:///content/drive/My Drive/mlflow_results/637807906163765682/models/m-753030fc9cfa45429f7b86eaf4a7c3ef/artifacts
+creation_timestamp: 1755074673234
+experiment_id: '637807906163765682'
+last_updated_timestamp: 1755074680776
+model_id: m-753030fc9cfa45429f7b86eaf4a7c3ef
+model_type: null
+name: xgboost_model
+source_run_id: 72eda1c88c3e4ee9a058f8a5b9935d7a
+status: 2
+status_message: null

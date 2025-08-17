@@ -1,0 +1,15 @@
+artifact_uri: file:///content/drive/My Drive/mlflow_results/902575739758309088/6fb7593655d34fdcab6225ba3e06dea0/artifacts
+end_time: 1741563497081
+entry_point_name: ''
+experiment_id: '902575739758309088'
+lifecycle_stage: active
+run_id: 6fb7593655d34fdcab6225ba3e06dea0
+run_name: example_run
+run_uuid: 6fb7593655d34fdcab6225ba3e06dea0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1741563496845
+status: 3
+tags: []
+user_id: root

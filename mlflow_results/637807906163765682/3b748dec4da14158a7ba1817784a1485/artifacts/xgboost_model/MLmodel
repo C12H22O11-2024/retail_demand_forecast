@@ -1,0 +1,64 @@
+artifact_path: xgboost_model
+flavors:
+  python_function:
+    data: model.xgb
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.xgboost
+    python_version: 3.11.12
+  xgboost:
+    code: null
+    data: model.xgb
+    model_class: xgboost.sklearn.XGBRegressor
+    model_format: xgb
+    xgb_version: 2.1.4
+is_signature_from_type_hint: false
+mlflow_version: 2.22.0
+model_size_bytes: 168195
+model_uuid: 631392a9c9f048d1a2de174268643f6f
+prompts: null
+run_id: 3b748dec4da14158a7ba1817784a1485
+signature:
+  inputs: '[{"type": "long", "name": "id", "required": true}, {"type": "long", "name":
+    "store_nbr", "required": true}, {"type": "long", "name": "item_nbr", "required":
+    true}, {"type": "double", "name": "onpromotion", "required": false}, {"type":
+    "double", "name": "dcoilwtico", "required": true}, {"type": "long", "name": "holiday_type",
+    "required": true}, {"type": "long", "name": "holiday_locale", "required": true},
+    {"type": "long", "name": "holiday_locale_name", "required": true}, {"type": "long",
+    "name": "holiday_description", "required": true}, {"type": "boolean", "name":
+    "holiday_transferred", "required": true}, {"type": "long", "name": "family", "required":
+    true}, {"type": "long", "name": "class", "required": true}, {"type": "long", "name":
+    "perishable", "required": true}, {"type": "long", "name": "month", "required":
+    true}, {"type": "long", "name": "year", "required": true}, {"type": "long", "name":
+    "quarter", "required": true}, {"type": "long", "name": "dayofweek", "required":
+    true}, {"type": "long", "name": "dayofyear", "required": true}, {"type": "long",
+    "name": "weekofyear", "required": true}, {"type": "long", "name": "is_month_start",
+    "required": true}, {"type": "long", "name": "is_month_end", "required": true},
+    {"type": "long", "name": "is_quarter_start", "required": true}, {"type": "long",
+    "name": "is_quarter_end", "required": true}, {"type": "long", "name": "is_year_start",
+    "required": true}, {"type": "long", "name": "is_year_end", "required": true},
+    {"type": "long", "name": "is_weekend", "required": true}, {"type": "double", "name":
+    "rolling_mean_7", "required": false}, {"type": "double", "name": "rolling_std_7",
+    "required": false}, {"type": "double", "name": "rolling_mean_30", "required":
+    false}, {"type": "double", "name": "rolling_std_30", "required": false}, {"type":
+    "double", "name": "expanding_mean", "required": false}, {"type": "double", "name":
+    "unit_sales_lag_1", "required": false}, {"type": "double", "name": "unit_sales_lag_7",
+    "required": false}, {"type": "double", "name": "unit_sales_lag_14", "required":
+    false}, {"type": "double", "name": "unit_sales_lag_30", "required": false}, {"type":
+    "double", "name": "unit_sales_lag_60", "required": false}, {"type": "double",
+    "name": "unit_sales_lag_90", "required": false}, {"type": "double", "name": "unit_sales_lag_180",
+    "required": false}, {"type": "double", "name": "dcoilwtico_lag_1", "required":
+    false}, {"type": "double", "name": "dcoilwtico_lag_7", "required": false}, {"type":
+    "double", "name": "dcoilwtico_lag_14", "required": false}, {"type": "double",
+    "name": "dcoilwtico_lag_30", "required": false}, {"type": "double", "name": "dcoilwtico_lag_60",
+    "required": false}, {"type": "double", "name": "dcoilwtico_lag_90", "required":
+    false}, {"type": "double", "name": "dcoilwtico_lag_180", "required": false}, {"type":
+    "double", "name": "sales_oil_interaction", "required": false}, {"type": "long",
+    "name": "city", "required": true}, {"type": "long", "name": "state", "required":
+    true}, {"type": "long", "name": "type", "required": true}, {"type": "long", "name":
+    "cluster", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float32", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-05-20 16:10:15.057873'

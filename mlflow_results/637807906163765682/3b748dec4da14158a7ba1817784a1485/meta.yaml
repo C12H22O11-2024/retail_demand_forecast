@@ -1,0 +1,15 @@
+artifact_uri: file:///content/drive/My Drive/mlflow_results/637807906163765682/3b748dec4da14158a7ba1817784a1485/artifacts
+end_time: 1747757424156
+entry_point_name: ''
+experiment_id: '637807906163765682'
+lifecycle_stage: active
+run_id: 3b748dec4da14158a7ba1817784a1485
+run_name: XGBoost_Guayas_test_1
+run_uuid: 3b748dec4da14158a7ba1817784a1485
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747757384040
+status: 3
+tags: []
+user_id: root
