@@ -19,3 +19,4 @@ Thumbs.db
 # ---- Streamlit / secrets (never commit secrets) ----
 .streamlit/secrets.toml
 .env
+data/*.csv
