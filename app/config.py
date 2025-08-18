@@ -3,17 +3,7 @@ import os
 # Project root (…/corporacion_favorita)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
-
 # --- MLflow store & model location ---
-# Points MLflow at your local runs folder (copied from Colab/Drive).
-# Must be an ABSOLUTE file URI (note the three slashes after file:).
-MLFLOW_TRACKING_URI = "file:///Users/sugar/Documents/Github/retail_demand_forecast/mlflow_results"
-
-# Model to load from MLflow. Add your own run_id here. We saw how to get it before.
-MODEL_URI = "runs:/26a599ff4fe14c7fb552e9ed53534ecb/model"
-"come back here"
-
 # Directory paths for data and model files
 DATA_PATH = os.path.join(os.getcwd(), "data/")
 
@@ -25,27 +15,15 @@ ITEMS_JSON = os.path.join(DATA_PATH, "item_numbers.json")
 SCALER_X_PATH = os.path.join(DATA_PATH, "scaler_X.pkl")
 SCALER_Y_PATH = os.path.join(DATA_PATH, "scaler_y.pkl")
 
-
 XGB_MODEL_PATH = os.path.join(BASE_DIR, "models", "xgboost_model_0816.pkl")
 LSTM_MODEL_PATH = os.path.join(BASE_DIR, "models", "lstm_model_0816.h5")
-"""MODEL_FILES = {
-    "xgboost_model": os.path.join(BASE_DIR, "models", "xgboost_model_0816.pkl"),
-    "lstm_model": os.path.join(BASE_DIR, "models", "lstm_model_0816.h5")
-}"""
 
-#MODEL_PATH = os.path.join(BASE_DIR, "models","xgboost_model_0816.pkl")
-
-
-
-#MODEL_PATH = "/Users/sugar/Documents/GitHub/retail_demand_forecast/"  # Path to the directory containing the model files
-#MODEL_PATH = 'models/'  # Path to the directory containing the model files
-#FEATURES_JSON = os.path.join(BASE_DIR, "models", "feature_cols.json")
 XGBOOST_FEATURES = ['store_nbr','item_nbr','year','month','day','day_of_week',
                 'lag_1','lag_7','lag_14','rolling_avg_7','rolling_stdv_7']
 LSTM_FEATURES = ['lag_1','lag_7','rolling_avg_7','rolling_stdv_7','year','month','day','day_of_week']
 
 # --- Model window length used in feature windowing ---
-SEQ_LEN = 60
+#SEQ_LEN = 60
 
 # Google Drive file IDs for each dataset
 your_file_id_for_stores_csv = '1heKGso4BXMzi4PMY2A_Csb2m-KiuwRxu'  # ID for stores data CSV

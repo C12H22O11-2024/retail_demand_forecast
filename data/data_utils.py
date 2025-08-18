@@ -110,8 +110,6 @@ def load_data(data_path=DATA_PATH):
     return  df_train, df_stores, df_items, df_transactions, df_oil, df_holidays
 
 
-#def preprocess_input_data(inp_store_nbr, inp_item_nbr, inp_date, df_train,  model_type="xgboost"):
-    #full_feature_df = create_features(df_train, inp_store_nbr, inp_item_nbr, inp_date)
 def preprocess_input_data(inp_store_nbr, inp_item_nbr, inp_date,
                           df_train, df_stores, df_items, df_transactions, df_oil, df_holidays,
                           model_type="xgboost"):
@@ -163,81 +161,6 @@ def prepare_input_for_model(full_feature_df, model_type):
 
     else:
         raise ValueError(f"Unknown model type: {model_type}")
-
-
-def notused_create_features(df_train, store_id, item_id, date):
-    '''"""
-    Creates all engineered features for both XGBoost and LSTM.
-    Returns a DataFrame filtered for the selected store/item/date.
-    """
-
-    # --- Validate df_train columns ---
-    required_columns = {"store_nbr", "item_nbr", "date", "unit_sales"}
-    missing_cols = required_columns - set(df_train.columns)
-    if missing_cols:
-        raise ValueError(f"df_train is missing required columns: {missing_cols}")
-
-    # --- Validate input ---
-    try:
-        inp_date = pd.to_datetime(date)
-    except Exception:
-        raise ValueError(f"Date {date} is not valid.")
-    if not (pd.Timestamp("2014-01-01") <= inp_date <= pd.Timestamp("2014-03-31")):
-        raise ValueError(f"Date {date} is outside allowed range.")
-
-    # --- Handle missing / cleaning ---
-    df_train = df_train.copy()
-    if 'onpromotion' in df_train.columns:
-        df_train['onpromotion'] = df_train['onpromotion'].fillna(False).astype(bool)
-
-    # Handle negative sales
-    df_train['unit_sales'] = df_train['unit_sales'].apply(lambda x: max(x, 0))
-
-    # Outlier handling (Z-score)
-    mean_sales = df_train.groupby(['store_nbr', 'item_nbr'])['unit_sales'].transform('mean')
-    std_sales = df_train.groupby(['store_nbr', 'item_nbr'])['unit_sales'].transform('std').replace(0,1).fillna(1)
-    df_train['z_score'] = (df_train['unit_sales'] - mean_sales) / std_sales
-    df_train = df_train[df_train['z_score'] <= 5]
-
-    # Fill missing dates
-    df_train['date'] = pd.to_datetime(df_train['date'])
-    min_date, max_date = df_train['date'].min(), df_train['date'].max()
-    full_date_range = pd.DataFrame({'date': pd.date_range(min_date, max_date, freq='D')})
-    store_item_combos = df_train[['store_nbr','item_nbr']].drop_duplicates()
-    all_combos = store_item_combos.merge(full_date_range, how='cross')
-    df_filled = all_combos.merge(df_train, on=['store_nbr','item_nbr','date'], how='left')
-    df_filled['unit_sales'] = df_filled['unit_sales'].fillna(0)
-
-    # Drop unnecessary columns
-    drop_cols = ['onpromotion','z_score','id','perishable','class']
-    df_filled = df_filled.drop(columns=[c for c in drop_cols if c in df_filled.columns])
-
-    # Feature engineering
-    df_filled["year"] = df_filled["date"].dt.year
-    df_filled["month"] = df_filled["date"].dt.month
-    df_filled["day"] = df_filled["date"].dt.day
-    df_filled["day_of_week"] = df_filled["date"].dt.dayofweek
-
-    # Lag features
-    for lag in [1,7,14,30]:
-        df_filled[f"lag_{lag}"] = df_filled.groupby(['store_nbr','item_nbr'])['unit_sales'].shift(lag)
-
-    # Rolling features
-    df_filled["rolling_avg_7"] = df_filled.groupby(['store_nbr','item_nbr'])['unit_sales'].transform(lambda x: x.rolling(7,min_periods=1).mean())
-    df_filled["rolling_stdv_7"] = df_filled.groupby(['store_nbr','item_nbr'])['unit_sales'].transform(lambda x: x.rolling(7,min_periods=1).std())
-
-    df_filled = df_filled.fillna(method='ffill').dropna()
-
-    # Filter for selected store/item/date
-    df_filtered = df_filled[(df_filled['store_nbr']==store_id) & 
-                            (df_filled['item_nbr']==item_id) &
-                            (df_filled['date']==inp_date)]
-
-    if df_filtered.empty:
-        # Return empty df instead of raising error
-        return pd.DataFrame()  
-
-    return df_filtered'''
 
 
 def update_window(last_input, pred):
